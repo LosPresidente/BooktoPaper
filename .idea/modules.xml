@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BooktoPaper.iml" filepath="$PROJECT_DIR$/.idea/BooktoPaper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CriminalIntent.iml" filepath="$PROJECT_DIR$/CriminalIntent.iml" />
+      <module fileurl="file://C:\CIDM4385\BTP2\BooktoPaper\CriminalIntent.iml" filepath="C:\CIDM4385\BTP2\BooktoPaper\CriminalIntent.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\CIDM4385\BTP2\BooktoPaper\app\app.iml" filepath="C:\CIDM4385\BTP2\BooktoPaper\app\app.iml" />
     </modules>
   </component>
 </project>
