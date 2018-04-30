@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.bignerdranch.android.criminalintent"
         minSdkVersion 19
@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-database:11.8.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -30,3 +31,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
+
+apply plugin: 'com.google.gms.google-services'

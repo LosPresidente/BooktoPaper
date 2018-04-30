@@ -6,10 +6,11 @@
     <string name="crime_solved_label">Solved</string>
     <string name="date_picker_title">Date posted:</string>
     <string name="new_crime">New book</string>
+    <string name="delete_crime">delete book</string>
     <string name="show_subtitle">Show books</string>
     <string name="hide_subtitle">Hide books</string>
     <string name="subtitle_format">%1$d books</string>
-    <string name="crime_suspect_text">Choose Suspect</string>
+    <string name="crime_suspect_text">Choose owner</string>
     <string name="crime_report_text">Share book with a friend!</string>
     <string name="crime_report">%1$s!
     The crime was discovered on %2$s. %3$s, and %4$s

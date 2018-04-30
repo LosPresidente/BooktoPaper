@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -16,7 +17,10 @@ import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,16 +30,29 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+//this is MainActivity
 public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
+    public static final String TAG = "Firebase";
 
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_CONTACT = 1;
@@ -44,6 +61,7 @@ public class CrimeFragment extends Fragment {
     private Crime mCrime;
     private File mPhotoFile;
     private EditText mTitleField;
+    private EditText mFireField;
     private Button mDateButton;
     private CheckBox mSolvedCheckbox;
     private Button mReportButton;
@@ -64,14 +82,19 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
         mPhotoFile = CrimeLab.get(getActivity()).getPhotoFile(mCrime);
+
+
+
+
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
 
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
@@ -178,6 +201,60 @@ public class CrimeFragment extends Fragment {
         mPhotoView = (ImageView) v.findViewById(R.id.crime_solved);
         updatePhotoView();
 
+        //Firebase--------------------------------------------------------------------------------------------------
+        // Write a message to the database
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        //mFireField = (EditText) v.findViewById(R.id.editTextMessage);
+
+
+        final EditText input = (EditText) v.findViewById(R.id.editTextMessage);
+
+        Button button = (Button) v.findViewById(R.id.buttonFirebaseStore);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+
+                String text = input.getText().toString();
+
+                String message = "message";
+                SimpleDateFormat s = new SimpleDateFormat("yyyyMMddhhmmss");
+                message += s.format(new Date());
+
+                // Write a message to the database
+                DatabaseReference firebaseRef = database.getReference(message);
+                firebaseRef.setValue(text);
+
+                // Read from the database
+                firebaseRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        String value = dataSnapshot.getValue(String.class);
+
+                     /*   // Do something in response to button click
+                        final Context context = getApplicationContext();
+                        //CharSequence text = "You Pressed the Stupid Button";
+                        int duration = Toast.LENGTH_SHORT;
+
+                        Toast toast = Toast.makeText(context,
+                                value + " was written to Firebase",
+                                duration);
+                        toast.show();
+*/
+                        Log.d(TAG, "Value is: " + value);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+            }
+        });
+
         return v;
     }
 
@@ -187,6 +264,24 @@ public class CrimeFragment extends Fragment {
 
         CrimeLab.get(getActivity())
                 .updateCrime(mCrime);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_crime, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_crime:
+                CrimeLab.get(getActivity()).deleteCrime(mCrime);
+                getActivity().finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
