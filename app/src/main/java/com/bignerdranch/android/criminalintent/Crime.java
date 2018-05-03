@@ -7,6 +7,7 @@ public class Crime {
 
     private UUID mId;
     private String mTitle;
+    private String mAuthor;
     private Date mDate;
     private boolean mSolved;
     private String mSuspect;
@@ -30,6 +31,14 @@ public class Crime {
 
     public void setTitle(String title) {
         mTitle = title;
+    }
+
+    public String getAuthor() {
+        return mAuthor;
+    }
+
+    public void setAuthor(String author) {
+        mAuthor = author;
     }
 
     public Date getDate() {

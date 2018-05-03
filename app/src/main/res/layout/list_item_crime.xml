@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="wrap_content"
-                                             android:orientation="vertical"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     >
 
     <TextView
@@ -15,11 +13,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Crime Title"
+        android:text="[Insert Author]"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/crime_title4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="by"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/crime_title"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/crime_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/crime_title4"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="[author]" />
 
     <TextView
         android:id="@+id/crime_date"
@@ -27,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Crime Date"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/crime_title" />
 

@@ -139,6 +139,7 @@ public class CrimeListFragment extends Fragment {
         private Crime mCrime;
 
         private TextView mTitleTextView;
+        private TextView mAuthorTextView;
         private TextView mDateTextView;
         private ImageView mSolvedImageView;
 
@@ -147,6 +148,7 @@ public class CrimeListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
+            mAuthorTextView = (TextView) itemView.findViewById(R.id.crime_author);
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
             mSolvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
         }
@@ -154,6 +156,7 @@ public class CrimeListFragment extends Fragment {
         public void bind(Crime crime) {
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
+            mAuthorTextView.setText(mCrime.getAuthor());
             mDateTextView.setText(mCrime.getDate().toString());
 //            mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
             //----------------------------------------------------------------------
