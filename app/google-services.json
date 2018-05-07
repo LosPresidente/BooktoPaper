@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "17279366970",
+    "firebase_url": "https://booktopaper.firebaseio.com",
+    "project_id": "booktopaper",
+    "storage_bucket": "booktopaper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17279366970:android:461e1c5128824c6a",
+        "android_client_info": {
+          "package_name": "com.bignerdranch.android.criminalintent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17279366970-mlb8vvvaqonr4grar42vbc2u45a4v18p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bignerdranch.android.criminalintent",
+            "certificate_hash": "a34dd77fd0094703aa3fbc3755cc2818da426105"
+          }
+        },
+        {
+          "client_id": "17279366970-vl241n5f0sd4kh1q8mdur1p31im5hth3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz0jsGnRyvQD9Dntny3L1qJsZRGp8rFUU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17279366970-vl241n5f0sd4kh1q8mdur1p31im5hth3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
