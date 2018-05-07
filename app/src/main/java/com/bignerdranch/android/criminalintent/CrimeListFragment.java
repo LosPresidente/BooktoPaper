@@ -16,11 +16,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bignerdranch.android.criminalintent.databinding.FragmentCrimeListBinding;
+
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
 public class CrimeListFragment extends Fragment {
+
+    public static CrimeListFragment newInstance(){
+        return new CrimeListFragment();
+    }
+
 
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
     private static final String ARG_CRIME_ID = "crime_id";
@@ -32,6 +39,7 @@ public class CrimeListFragment extends Fragment {
     private ImageView mPhotoView;
     private Crime mCrime;
 
+    FragmentCrimeListBinding mBinding;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
